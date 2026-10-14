@@ -1,0 +1,19 @@
+team_forecast:
+  description: >
+    Marketing đề xuất chiến dịch sau. Dự báo doanh số và nhân lực bán hàng bằng tool sales_forecast.
+
+    ```json
+    {proposal}
+    ```
+  expected_output: >
+    JSON dự báo của Sale (deals, revenue, sales_headcount_planned, quota_per_rep, note).
+  agent: sales_lead
+
+team_staffing:
+  description: >
+    Dựa trên dự báo của Sale ở bước trước, lập kế hoạch nhân sự bằng tool staffing_plan.
+  expected_output: >
+    JSON kế hoạch nhân sự của HR (hires, cost, timeline_weeks, open_questions).
+  agent: hr_lead
+  context:
+    - team_forecast

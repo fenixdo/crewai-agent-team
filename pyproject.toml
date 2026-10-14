@@ -1,0 +1,33 @@
+[project]
+name = "crewai_agent_team"
+version = "0.1.0"
+description = "Deployment chung cho 2 agent Sale + HR trên AMP (gói Basic chỉ cho 2 crew); code agent nằm ở crewai-agent-sale và crewai-agent-hr"
+authors = [{ name = "fenixdo", email = "fenix@torilab.ai" }]
+requires-python = ">=3.10,<3.14"
+dependencies = [
+    "crewai[a2a]==1.15.27",
+    "crewai_agent_sale @ git+https://github.com/fenixdo/crewai-agent-sale@main",
+    "crewai_agent_hr @ git+https://github.com/fenixdo/crewai-agent-hr@main",
+]
+
+[project.scripts]
+crewai_agent_team = "crewai_agent_team.main:run"
+run_crew = "crewai_agent_team.main:run"
+train = "crewai_agent_team.main:train"
+replay = "crewai_agent_team.main:replay"
+test = "crewai_agent_team.main:test"
+run_with_trigger = "crewai_agent_team.main:run_with_trigger"
+
+[dependency-groups]
+dev = ["pytest>=8"]
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.crewai]
+type = "crew"
+project_id = "de55c24e-dd50-4850-bf09-576737a4a606"
